@@ -11,7 +11,7 @@ app.use(express.json());
 app.get("/api/incidents", async (req, res) => {
   try {
     const response = await axios.get(
-      `${process.env.SN_URL}/api/now/table/incident`,
+      `${process.env.SN_URL}/api/now/table/incident?sysparm_query=active=true`,
       {
         auth: {
           username: process.env.SN_USER,
@@ -42,3 +42,4 @@ app.get("/api/incidents", async (req, res) => {
 app.listen(5000, () => {
   console.log("✅ Backend running at http://localhost:5000");
 });
+
